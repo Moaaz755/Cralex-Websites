@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads | Cralex SMP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #121212;
+            --dark-gray: #1E1E1E;
+            --medium-gray: #2E2E2E;
+            --light-gray: #7E7E7E;
+            --white: #FFFFFF;
+            --accent: #FFFFFF;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: var(--white);
+            background-color: var(--black);
+            overflow-x: hidden;
+        }
+        
+        #video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.08;
+        }
+        
+        header {
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 45px;
+            filter: invert(1);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: var(--light-gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .download-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 5rem 0;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+        
+        .download-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .download-card i {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .download-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .download-card p {
+            color: var(--light-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .requirements {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+        }
+        
+        .requirements h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .requirements ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+        
+        .tutorials {
+            margin: 6rem 0;
+        }
+        
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        
+        .tutorial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+        
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .tutorial-info {
+            padding: 1.8rem;
+        }
+        
+        .tutorial-info h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .tutorial-info p {
+            color: var(--light-gray);
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        .help-section {
+            text-align: center;
+            margin: 6rem 0 4rem;
+        }
+        
+        .help-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .help-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        @media (max-width: 768px) {
+            .download-options, .tutorial-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="video-bg" autoplay muted loop>
+        <source src="assets/white_tapography.mp4" type="video/mp4">
+        <img src="assets/fallback-bg.jpg" alt="Background pattern">
+    </video>
+    
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Cralex Logo">
+            <h1>Cralex</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="https://discord.gg/YOUR_INVITE" target="_blank">Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>Download & Installation</h2>
+            <p>Get everything you need to join our premium modded SMP experience</p>
+        </div>
+    </section>
+    
+    <section class="container">
+        <h2 class="section-title">Modpack Downloads</h2>
+        <div class="download-options">
+            <div class="download-card">
+                <i class="fab fa-microsoft"></i>
+                <h3>Official Launcher</h3>
+                <p>For users of Official Minecraft</p>
+                <a href="cralex_smp.mcpack" class="btn" download>Download .mcpack</a>
+                
+                <div class="requirements">
+                    <h4>System Requirements:</h4>
+                    <ul>
+                        <li>Minecraft Java Edition (Version 1.20.1)</li>
+                        <li>Forge modloader installed</li>
+                        <li>Minimum 8GB RAM allocated</li>
+                        <li>Modern GPU recommended</li>
+                        <li>Modrinth Installed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="download-card">
+                <i class="fas fa-download"></i>
+                <h3>Unofficial Minecraft Version</h3>
+                <p>For Tlauncher and other cracked clients</p>
+                <a href="cralex_smp.zip" class="btn" download>Download .zip</a>
+                
+                <div class="requirements">
+                    <h4>System Requirements:</h4>
+                    <ul>
+                        <li>Minecraft Java Edition (Version 1.20.1)</li>
+                        <li>Forge modloader installed</li>
+                        <li>Tlauncher</li>
+                        <li>Minimum 8GB RAM allocated</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container tutorials">
+        <h2 class="section-title">Installation Tutorials</h2>
+        
+        <div class="tutorial-grid">
+            <div class="tutorial-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/YOUR_OFFICIAL_TUTORIAL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="tutorial-info">
+                    <h3>Official Launcher Guide</h3>
+                    <p>Step-by-step instructions for installing the modpack using the standard Minecraft launcher.</p>
+                </div>
+            </div>
+            
+            <div class="tutorial-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/YOUR_THIRDPARTY_TUTORIAL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="tutorial-info">
+                    <h3>Third-Party Launcher Guide</h3>
+                    <p>Complete walkthrough for installing using MultiMC or other third-party launchers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container help-section">
+        <h2>Need Help Installing?</h2>
+        <p>Join our Discord community for personalized support and to connect with other players. Our staff and community members are happy to help you get set up.</p>
+        <a href="https://discord.gg/YOUR_INVITE" class="btn" target="_blank">Get Support on Discord</a>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p style="color: var(--light-gray); margin-bottom: 0.5rem;">© 2023 Cralex SMP. All rights reserved.</p>
+            <p style="color: var(--light-gray); font-size: 0.9rem;">Not affiliated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+</body>
+</html>
